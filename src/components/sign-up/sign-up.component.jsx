@@ -18,12 +18,6 @@ class SignUp extends React.Component{
             confirmPassword:''
         }
     }
-    newUser = async (newUser,name) => {
-        await newUser.user.updateProfile({
-            displayName:name
-        })
-        return newUser;
-    }
     handleSubmit = async event => {
         event.preventDefault();
         const {displayName,email, password, confirmPassword} = this.state;
@@ -36,28 +30,18 @@ class SignUp extends React.Component{
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email,password);
             
-            // const {currUser} = await this.newUser(user,displayName);
-            // console.log(currUser);
-
-            // await user.updateProfile({
+            // user.updateProfile({
             //     displayName:displayName,
             // });
-           
-            // await createUserProfileDocument(currUser);
-            user.updateProfile({
-                displayName:displayName
-              }).then(function() {
-                createUserProfileDocument(user)
-              }).catch(function(error) {
-                // An error happened.
-              });
+        
+            await createUserProfileDocument(user,{displayName});
             this.setState({
                 displayName:'',
                 email:'',
                 password:'',
                 confirmPassword:''
 
-            });
+            })
 
 
         } catch(Error){
