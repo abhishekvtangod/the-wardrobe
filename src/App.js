@@ -58,7 +58,7 @@ class App extends React.Component{
   componentWillUnmount(){
     this.unsubscribeFromAuth();
   }
-
+  // [match, location, history]
   render(){
     return (
       <div>
