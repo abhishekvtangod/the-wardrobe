@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # api key containing files
-/src/firebase
-/src/components/stripe-button
+# /src/firebase
+# /src/components/stripe-button
